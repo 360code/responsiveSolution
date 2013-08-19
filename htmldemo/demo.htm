@@ -1,0 +1,2233 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="gbk"/>
+		<title>行业响应式demo</title>
+		<meta name="description" content=""/>
+		<meta name="keywords" content=""/>
+		<link href="http://static.c.aliimg.com/fdevlib/css/fdev-v4/core/fdev-op.css" rel="stylesheet"/>
+		<link href="http://static.c.aliimg.com/css/app/operation/global/pitaya-v4-min.css" rel="stylesheet"/>
+		<link href="http://static.c.aliimg.com/css/app/operation/global/pitaya-v5.css" rel="stylesheet"/>
+		<link href="http://static.c.aliimg.com/sys/css/universal/alibar/standard-v4.css" rel="stylesheet"/>
+		<link href="http://style.c.aliimg.com/sys/css/universal/header/lateral-v1.css" rel="stylesheet"/>
+		<link href="http://static.c.aliimg.com/sys/css/universal/footer/standard-v0.css" rel="stylesheet" />
+		<link href="http://static.c.aliimg.com/css/app/operation/module/service/standard-v0.css" rel="stylesheet" />
+		<link href="css/index.css" rel="stylesheet"/>
+		<link href="css/media.css" rel="stylesheet"/>
+		<script type="text/javascript" src="http://static.c.aliimg.com/js/lib/fdev-v4/core/fdev-min.js"></script> 
+		<!--[if lte IE 8]>
+		<script type="text/javascript">
+			(function(jq){
+				var w = jq(window).width(),
+					idx = -1,				// 后台返回的index
+					realIdx = -1,			// 实际的index
+					ws = [1260, 1440],
+					classNames = ['max1024', 'max1280', 'max1440'],
+					_html = jq('html');
+
+				if( _html.hasClass('max1024') ){
+					idx = 0;
+				}else if( _html.hasClass('max1280') ){
+					idx = 1;
+				}else if( _html.hasClass('max1440') ){
+					idx = 2;
+				}
+				
+				// 如果后台有cookie，并加上了class，则判断实际的宽度是否和后台一致，不一致则切换class
+				if( idx > -1 ){
+					ws.push(w);
+					ws.sort();
+					realIdx = ws.indexOf(w);
+					
+					if( realIdx !== idx ){
+						_html.removeClass('max1024 max1280 max1440').addClass(classNames[realIdx]);
+					}
+				}
+
+			})(jQuery);
+		</script>
+		<![endif]-->
+		<base target="_blank"/>
+	</head>
+	<body>
+		<div id="doc">
+			<div id="alibar" class="fd-clr">
+				<div id="alibar-v4">
+					<div class="alibar-container">
+						<div class="mobile">
+							<a href="http://3g.1688.com/?tracelog=wireless_alibar">手机版</a>
+						</div>
+						<div class="account-sign-status">
+							<ul>
+								<li class="account-welcome vipInfoBox">
+									<span class="sayHello">您好，</span>
+									<div class="nav-title">
+										<span class="account-id">
+											<a href="http://me.1688.com/" target="_blank" title="okbeng2011">okbeng2011</a>
+										</span>
+									</div>
+									<div class="nav-content"></div>
+								</li>
+								<li class="account-msg fd-hide">
+									<a rel="nofollow" href="http://work.1688.com/app/messageCenter.htm" title="查看你的消息" target="_blank">消息</a>
+								</li>
+								<li class="account-signin">
+									<a rel="nofollow" href="https://login.1688.com/member/signin.htm?Done=http%3A%2F%2Fimall.1688.com%2F%3Fspm%3Da260k.6631997.350708329.26" title="请登录" data-trace="cn_alibar_login" target="_self">请登录</a>
+								</li>
+								<li class="account-signup">
+									<a rel="nofollow" href="http://my.1688.com/member/join/common_join.htm" title="免费注册" data-trace="cn_alibar_reg" target="_blank">免费注册</a>
+								</li>
+							</ul>
+						</div>
+						<div class="topnav">
+							<ul>
+								<li class="list-first">
+									<div class="nav-title">
+										<a href="http://www.1688.com/" title="阿里巴巴首页" data-trace="cn_alibar_home" target="_blank">阿里巴巴首页</a>
+									</div>
+								</li>
+								<li class="topnav-myali extra">
+									<div class="nav-title">
+										<a rel="nofollow" class="nav-arrow" href="http://my.1688.com/member/myalibaba.htm" title="我的阿里" data-trace="cn_alibar_myali" target="_blank">我的阿里</a>
+									</div>
+									<div class="nav-content">
+										<dl>
+											<dt>采购</dt>
+											<dd>
+												<a rel="nofollow" href="http://work.1688.com/app/buyList.htm" title="已买到货品" data-trace="cn_alibar_myali_bought" target="_blank">已买到货品</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://go.1688.com/buyoffer/post_offer.htm?tracelog=bing_post_visit_alibar&amp;source_type=alibar&amp;formtype=full" title="发布询价单" data-trace="cn_alibar_myali_rfq_post" target="_blank">发布询价单</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://work.1688.com/app/RFQManage.htm" title="管理询价单" data-trace="cn_alibar_myali_rfq_manage" target="_blank">管理询价单</a>
+											</dd>
+										</dl>
+										<dl>
+											<dt>销售</dt>
+											<dd>
+												<a rel="nofollow" href="http://work.1688.com/app/saleList.htm" title="已卖出货品" data-trace="cn_alibar_myali_sold" target="_blank">已卖出货品</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://work.1688.com/app/orderPost.htm" title="发布供应产品" data-trace="cn_alibar_myali_offer_post" target="_blank">发布供应产品</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://work.1688.com/app/orderManage.htm" title="管理供应产品" data-trace="cn_alibar_myali_offer_manage" target="_blank">管理供应产品</a>
+											</dd>
+										</dl>
+										<dl>
+											<dt>工具</dt>
+											<dd>
+												<a rel="nofollow" href="http://work.1688.com/#app=winporter" title="管理旺铺" data-trace="cn_alibar_myali_winport" target="_blank">管理旺铺</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://view.1688.com/cms/itbu/app/index.html" title="应用市场" data-trace="cn_alibar_myali_pc" target="_blank">应用市场</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://56.1688.com/" title="物流服务" data-trace="cn_alibar_myali_56" target="_blank">物流服务</a>
+											</dd>
+										</dl>
+									</div>
+								</li>
+								<li class="topnav-purchaselist extra topnav-purchaselist-empty">
+									<div class="nav-title">
+										<a rel="nofollow" class="nav-arrow" href="http://order.1688.com/order/purchase/purchase_list.htm" title="进货单" data-trace="cn_alibar_cart" target="_blank">
+											<span>&nbsp;</span>
+											进货单( <em>0</em>
+											)
+										</a>
+									</div>
+									<div class="nav-content">
+										<div class="product-list fd-clr" style="height: auto;">
+											<p class="">进货单中暂未添加任何货品</p>
+										</div>
+										<div class="purchase-info fd-clr">
+											<a class="btn-y" title="查看进货单" href="http://order.1688.com/order/purchase/purchase_list.htm" target="_blank" data-trace="cn_alibar_purchaselist_list">查看进货单</a>
+										</div>
+									</div>
+								</li>
+								<li class="">
+									<div class="nav-title">
+										<a rel="nofollow" href="http://work.1688.com/app/myFavorites.htm" title="收藏夹" data-trace="cn_alibar_myali_fav" target="_blank">收藏夹</a>
+									</div>
+								</li>
+								<li class="topnav-tp extra">
+									<div class="nav-title">
+										<a rel="nofollow" class="nav-arrow" href="http://cxt.1688.com/" title="诚信通服务" data-trace="cn_alibar_cxt" target="_blank">诚信通服务</a>
+									</div>
+									<div class="nav-content">
+										<dl>
+											<dd>
+												<a rel="nofollow" class="contact-us" href="http://view.1688.com/cms/promotion/ppcall6188.html?tracelog=cxt_jd" title="免费联系我们" data-trace="cn_alibar_cxt_contact" target="_blank">免费联系我们</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" class="order-online alitalk alitalk-on" href="javascript:;" data-alitalk-shunt="{'positionId':'Top_Banner'}" title="在线订购申请" data-trace="cn_alibar_cxt_alitalk" target="_blank">在线订购申请</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" class="renewal-online" href="http://view.1688.com/cms/promotion/cxtzxxy.html" title="在线办理续费" data-trace="cn_alibar_cxt_renewal" target="_blank">在线办理续费</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" class="apply-form" href="http://cxt.1688.com/zaixianbanli/kuibiao/index.html" title="免费填写申请表" data-trace="cn_alibar_cxt_form" target="_blank">免费填写申请表</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" class="join-promotion" href="http://view.1688.com/cms/video/cxt/hd/index.html" title="参加优惠活动" data-trace="cn_alibar_cxt_coupon" target="_blank">参加优惠活动</a>
+											</dd>
+										</dl>
+									</div>
+								</li>
+								<li class="">
+									<div class="nav-title">
+										<a href="http://page.1688.com/indexseller.html" title="供应商专区" data-trace="cn_alibar_supplier" target="_blank">供应商专区</a>
+									</div>
+								</li>
+								<li class="topnav-kf extra">
+									<div class="nav-title">
+										<a class="nav-arrow" rel="nofollow" href="http://114.1688.com/kf/index.html?tracelog=kf_2012_budian_shouyetongyi" title="客服中心" target="_blank">客服中心</a>
+									</div>
+									<div class="nav-content">
+										<dl>
+											<dd>
+												<a rel="nofollow" href="http://page.1688.com/html/service/aliguide/seller_user_guide.html?tracelog=kf_2012_budian_shouyetongyi1" title="新手上路" target="_blank">新手上路</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://114.1688.com/kf/question/mjbz.html?tracelog=kf_2012_budian_shouyetongyi3" title="买家帮助" target="_blank">买家帮助</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://114.1688.com/kf/question/sellerbz.html?tracelog=kf_2012_budian_shouyetongyi2" title="卖家帮助" target="_blank">卖家帮助</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://my.1688.com/member/sso/sso.do?to_url=http%3A%2F%2Fportal.manjushri.alibaba.com%2Fportal%2Fportal%2Finit.jspa%3FinstanceCode%3DALIR00000161%26scenceCode%3DSCEN00002864%26digest%3D224839255030dd74f7c6c08c54dd78e2&amp;unlogin_url=http%3A%2F%2Fportal.manjushri.alibaba.com%2Fportal%2Fportal%2Finit.jspa%3FinstanceCode%3DALIR00000161%26scenceCode%3DSCEN00002864%26digest%3D224839255030dd74f7c6c08c54dd78e2" title="在线咨询" target="_blank">在线咨询</a>
+											</dd>
+										</dl>
+									</div>
+								</li>
+								<li class="topnav-sitemap extra">
+									<div class="nav-title">
+										<a class="nav-arrow" href="http://page.1688.com/system/sitemap.html" title="网站导航" data-trace="cn_alibar_allservice" target="_blank">网站导航</a>
+									</div>
+									<div class="nav-content">
+										<dl>
+											<dt>安全交易</dt>
+											<dd>
+												<a rel="nofollow" href="http://page.1688.com/buyerprotection/buyer.html" title="买家保障" data-trace="cn_alibar_allservice_ buyerprotection" target="_blank">买家保障</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://page.1688.com/trust/rztx.html" title="商家认证" data-trace="cn_alibar_allservice_rztx" target="_blank">商家认证</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://view.1688.com/cms/safe/xyzf/zwz/alipay/zfbyxy.html" title="支付宝" data-trace="cn_alibar_allservice_alipay" target="_blank">支付宝</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://levit.1688.com/complain/cmtPost/selectPage.htm" title="投诉举报" data-trace="cn_alibar_allservice_flag" target="_blank">投诉举报</a>
+											</dd>
+										</dl>
+										<dl>
+											<dt>常用工具</dt>
+											<dd>
+												<a rel="nofollow" href="http://view.1688.com/cms/shangji/sjzl.html" title="商机助理" data-trace="cn_alibar_allservice_assistant" target="_blank">商机助理</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://view.1688.com/cms/promotion/shangjikuaidi/200904/index.html" title="商机快递" data-trace="cn_alibar_allservice_subscribe" target="_blank">商机快递</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://wangwang.1688.com/" title="阿里旺旺" data-trace="cn_alibar_allservice_alitalk" target="_blank">阿里旺旺</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://3g.1688.com/" title="手机阿里" data-trace="cn_alibar_allservice_mobile" target="_blank">手机阿里</a>
+											</dd>
+										</dl>
+										<dl>
+											<dt>资讯社区</dt>
+											<dd>
+												<a rel="nofollow" href="http://info.1688.com/ " title="商业资讯" data-trace="cn_alibar_allservice_info" target="_blank">商业资讯</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://club.1688.com/forum/index.html" title="论坛" data-trace="cn_alibar_allservice_forum" target="_blank">论坛</a>
+												&nbsp;&nbsp;
+												<a rel="nofollow" href="http://blog.1688.com/" title="博客" data-trace="cn_alibar_allservice_blog" target="_blank">博客</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://quan.1688.com/" title="商友圈" data-trace="cn_alibar_allservice_quan" target="_blank">商友圈</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://baike.1688.com/" title="生意经" data-trace="cn_alibar_allservice_baike" target="_blank">生意经</a>
+											</dd>
+										</dl>
+										<dl>
+											<dt>商机市场</dt>
+											<dd>
+												<a rel="nofollow" href="http://yl.1688.com/" title="原材料" data-trace="cn_alibar_allservice_yl" target="_blank">原材料</a>
+												&nbsp;&nbsp;
+												<a rel="nofollow" href="http://industry.1688.com/" title="工业品" data-trace="cn_alibar_allservice_industry" target="_blank">工业品</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://fuzhuang.1688.com/" title="服装" data-trace="cn_alibar_allservice_fz" target="_blank">服装</a>
+												&nbsp;&nbsp;
+												<a rel="nofollow" href="http://fushi.1688.com/" title="箱包" data-trace="cn_alibar_allservice_fs" target="_blank">鞋包</a>
+												&nbsp;&nbsp;
+												<a rel="nofollow" href="http://home.1688.com/" title="家居" data-trace="cn_alibar_allservice_jiaju" target="_blank">家居</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://smart.1688.com/" title="小商品" data-trace="cn_alibar_allservice_xsp" target="_blank">小商品</a>
+												&nbsp;&nbsp;
+												<a rel="nofollow" href="http://food.1688.com/" title="农食" data-trace="cn_alibar_allservice_food" target="_blank">农食</a>
+												&nbsp;&nbsp;
+												<a rel="nofollow" href="http://daili.1688.com/" title="代理加盟" data-trace="cn_alibar_allservice_daili" target="_blank">代理</a>
+											</dd>
+											<dd>
+												<a rel="nofollow" href="http://yang.1688.com/" title="样品中心" data-trace="cn_alibar_allservice_samplecenter" target="_blank">样品中心</a>
+											</dd>
+										</dl>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="alibar-tips fd-hide">
+						<div class="tips-content">
+							<div class="tip-logo"></div>
+							<div class="tip-text">
+								阿里巴巴中国站和淘宝网会员帐号体系、《阿里巴巴服务条款》升级，完成登录后两边同时登录成功。
+								<a href="http://page.1688.com/2012/notice.html" target="_blank" class="fd-right detail-link">查看详情&gt;&gt;</a>
+							</div>
+							<div class="tips-close"></div>
+						</div>
+						<div class="tips-top"></div>
+					</div>
+				</div>
+			</div>
+			<div id="header" class="imall">
+				<div id="ali-masthead-5h">
+					<div class="ali-masthead-container screen fd-clr">
+						<div class="ali-logo">
+							<a title="阿里巴巴" href="http://www.1688.com/" class="main-logo">
+								<img alt="阿里巴巴" src="http://i04.c.aliimg.com/cms/upload/hangye/lateral/logo/imall-logo.png"></a>
+							<div class="sub-logo" title="工业品品牌商城">
+								<a class="sub-logo-txt" href="http://imall.1688.com/">工业品品牌商城</a>
+							</div>
+						</div>
+						<div class="ali-slogan"></div>
+						<div class="ali-search">
+							<form action="http://s.1688.com/promotion/offer_search.htm" onsubmit="return false" autocomplete="off">
+								<fieldset>
+									<legend>阿里巴巴搜索</legend>
+									<div class="alisearch-container">
+										<div class="alisearch-box">
+											<div class="alisearch-type">
+												<ul>
+													<li class="current" data-type="alisearch-product" data-config="{url:'http://suggest.1688.com/bin/suggest',action:'http://s.1688.com/promotion/offer_search.htm',placeholder:'输入产品名称',suggest:true,type:'offer'}">
+														<a title="产品" href="http://exodus.1688.com/" hidefocus="true">产品</a>
+													</li>
+
+													<li data-type="alisearch-company" data-config="{url:'http://suggest.1688.com/bin/suggest',action:'http://s.1688.com/company/company_search.htm',placeholder:'输入公司名称或关键词',suggest:true,type:'company'}">
+														<a title="公司" href="http://page.1688.com/cp/cp1.html" hidefocus="true">公司</a>
+													</li>
+													<li data-type="alisearch-buy" data-config="{url:'http://page.1688.com/cp/cp8.html',action:'http://s.1688.com/newbuyoffer/buyoffer_search.htm',placeholder:'输入产品名称',suggest:true,type:'offer'}">
+														<a title="找买家" href="http://page.1688.com/cp/cp8.html" hidefocus="true">求购</a>
+													</li>
+												</ul>
+											</div>
+											<div class="alisearch-keywords">
+												<input class="ui-autocomplete-input" accesskey="s" autocomplete="off" maxlength="50" name="keywords" x-webkit-speech="" x-webkit-grammar="builtin:translate" placeholder="输入产品名称" role="textbox" aria-autocomplete="list" aria-haspopup="true">			
+												<input type="hidden" name="n" value="y">			
+												<input type="hidden" name="from" value="marketSearch">			
+												<input type="hidden" name="tab" value="imall"></div>
+										</div>
+										<div class="alisearch-action">
+											<button class="market" type="submit" data-industry-flag="industrial" data-header-trace="industrial">搜本市场</button>
+											<button class="global" type="button" data-header-trace="sale_top_all_b">搜 索</button>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+
+							<div class="hot-keywords">
+								<a title="ABB" href="http://imall.1688.com/spubrand/spu_list_319.htm" target="_blank">ABB</a>
+								<a title="博世" href="http://imall.1688.com/spubrand/spu_list/222.htm" target="_blank">博世</a>
+								<a title="福禄克" href="http://imall.1688.com/spubrand/spu_list_111.htm" target="_blank">福禄克</a>
+								<a title="飞利浦" href="http://imall.1688.com/spubrand/spu_list/242.htm" target="_blank">飞利浦</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="ali-nav-5h">
+					<div class="ali-nav-container screen fd-clr">
+
+						<div class="ali-nav-category" data-config="{showcategory: false}">
+							<div class="cat-title">
+								<h3>
+									所有商品分类
+									<span class="eng">CATEGORIES</span>
+								</h3>
+								<span class="dropdown"></span>
+							</div>
+							<div class="cat-content"></div>
+						</div>
+						<div class="ali-nav-list">
+							<ul>
+								<li class="current first-child">
+									<a href="http://imall.1688.com/" target="_self">首页</a>
+								</li>
+								<li class="">
+									<a href="http://imall.1688.com/industry/index.htm" target="_self">品牌库</a>
+								</li>
+								<li class="">
+									<a href="http://page.1688.com/channel/imall/ruzhu.html" target="_self">商城入驻</a>
+								</li>
+								<li class="">
+									<a href="http://page.1688.com/channel/imall/jieshao.html" target="_self">商城介绍</a>
+								</li>
+							</ul>
+						</div>
+						<div class="ali-nav-promotion">
+							<div class="ali-nav-announcement" style="display: block;">
+								<ul>
+									<li>
+										<label>商城公告</label>
+										<a href="http://industry.1688.com/imallupgrade.html" target="_blank" title="工业品品牌商城重大升级公告">工业品品牌商城重大升级公告</a>
+									</li>
+									<!-----      <li>			
+									<label>商城公告</label>
+									<a href="http://club.1688.com/threadview/36157241.html?forumId=34&asker=ATC_message" target="_blank" title="【清单采购】工具，助您轻松完成采购">【清单采购】工具，助您采购更轻松</a> <b class="new-i"></b>
+								</li>
+								---->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div id="content">
+				<div class="content-wrap screen">
+					<div class="layout layout-col">
+						<div class="grid">
+							<div class="region-screen1st">
+								<div class="r-aisde mod-spm" data-spm="5981201">
+									<div class="mod mod-category">
+										<div class="content">
+											<ul id="main-category" class="obj-category">
+												<li class="item">
+													<div class="o-main">
+														<h4>
+															<a href="http://imall.1688.com/industry/index.htm?index=1" target="_blank" title="安全防护">安全防护</a>
+														</h4>
+														<span class="o-subtitle">
+															<a href="http://imall.1688.com/brand/102.htm" target="_blank" title="海康威视">海康威视</a>
+														</span>
+													</div>
+													<div class="o-extra" style="top: 0px;">
+														<div class="cell-category-list" style="height: 246px;">
+															<ul>
+																<li>
+																	<a href="http://imall.1688.com/industry/index.htm?index=1&amp;categoryId=3011" title="安防监控设备" target="_blank">安防监控设备</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/industry/index.htm?index=1&amp;categoryId=1041269" title="监控传输设备" target="_blank">监控传输设备</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/industry/index.htm?index=1&amp;categoryId=1041272" title="监控记录设备" target="_blank">监控记录设备</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/industry/index.htm?index=1&amp;categoryId=3002" title="防盗报警设备" target="_blank">防盗报警设备</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/industry/index.htm?index=1&amp;categoryId=3020" title="楼宇对讲设备" target="_blank">楼宇对讲设备</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/industry/index.htm?index=1&amp;categoryId=1336" title="门禁考勤器材及系统" target="_blank">门禁考勤器材及系统</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/industry/index.htm?index=1&amp;categoryId=3017" title="智能卡" target="_blank">智能卡</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/industry/index.htm?index=1&amp;categoryId=3001" title="安全检查设备" target="_blank">安全检查设备</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/industry/index.htm?index=1&amp;categoryId=3019" title="防静电产品" target="_blank">防静电产品</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/industry/index.htm?index=1&amp;categoryId=1041418" title="家居智能" target="_blank">家居智能</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/industry/index.htm?index=1&amp;categoryId=1041373" title="智能交通" target="_blank">智能交通</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/industry/index.htm?index=1&amp;categoryId=1041377" title="防雷电设备" target="_blank">防雷电设备</a>
+																</li>
+															</ul>
+														</div>
+														<div class="cell-brand-layer">
+															<div class="header fd-clr">
+																<span class="title">安全防护品牌</span>
+																<a href="http://imall.1688.com/industry/index.htm?index=1" class="more">更多</a>
+															</div>
+															<div class="content">
+																<ul class="list">
+																	<li>
+																		<a href="http://imall.1688.com/brand/102.htm">海康威视</a>
+																	</li>
+																	<li>
+																		<a href="http://imall.1688.com/brand/276.htm">大华</a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+														<!--             <div class="cell-brand-activity">					
+														<div class="header">
+															<span class="title">品牌活动</span>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="#">安全防护最人气供应商</a>
+																</li>
+																<li>
+																	<a href="#">安全防护最人气供应商</a>
+																</li>
+																<li>
+																	<a href="#">安全防护最人气供应商</a>
+																</li>
+																<li>
+																	<a href="#">安全防护最人气供应商</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+													-->
+												</div>
+											</li>
+											<li class="item">
+												<div class="o-main">
+													<h4>
+														<a href="http://imall.1688.com/industry/index.htm?index=2" target="_blank" title="电工器材">电工器材</a>
+													</h4>
+													<span class="o-subtitle">
+														<a href="http://imall.1688.com/brand/250.htm" target="_blank" title="TOP/突破">TOP/突破</a>
+													</span>
+												</div>
+												<div class="o-extra" style="top: 0px;">
+													<div class="cell-category-list" style="height: 244px;">
+														<ul>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=2&amp;categoryId=1407" title="开关" target="_blank">开关</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=2&amp;categoryId=528" title="插座" target="_blank">插座</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=2&amp;categoryId=10204" title="电池" target="_blank">电池</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=2&amp;categoryId=529" title="电源" target="_blank">电源</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=2&amp;categoryId=10197" title="电线、电缆" target="_blank">电线、电缆</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=2&amp;categoryId=629" title="充电器" target="_blank">充电器</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=2&amp;categoryId=1324" title="绝缘材料" target="_blank">绝缘材料</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=2&amp;categoryId=3019" title="防静电产品" target="_blank">防静电产品</a>
+															</li>
+														</ul>
+													</div>
+													<div class="cell-brand-layer">
+														<div class="header fd-clr">
+															<span class="title">电工器材品牌</span>
+															<a href="http://imall.1688.com/industry/index.htm?index=2" class="more">更多</a>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://yqjxdy.cn.1688.com/">大鑫</a>
+																</li>
+																<li>
+																	<a href="http://lgn4428.cn.1688.com/">宏力诚</a>
+																</li>
+																<li>
+																	<a href="http://lightany.cn.1688.com/">Lightany/亮泰</a>
+																</li>
+																<li>
+																	<a href="http://yqccdxc.cn.1688.com/">CC/长城电线</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+													<div class="cell-brand-activity">
+														<div class="header">
+															<span class="title"></span>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://industry.1688.com/dgdg/dqkz.html"></a>
+																</li>
+
+															</ul>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="o-main">
+													<h4>
+														<a href="http://imall.1688.com/industry/index.htm?index=3" target="_blank" title="标准件">标准件</a>
+													</h4>
+													<span class="o-subtitle">
+														<a href="http://imall.1688.com/brand/282.htm" target="_blank" title="HRB/哈尔滨">HRB/哈尔滨</a>
+													</span>
+												</div>
+												<div class="o-extra" style="top: 0px;">
+													<div class="cell-category-list" style="height: 318px;">
+														<ul>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=3&amp;categoryId=141903" title="轴承" target="_blank">轴承</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=3&amp;categoryId=141906" title="紧固件、连接件" target="_blank">紧固件、连接件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=3&amp;categoryId=1032471" title="气动元件" target="_blank">气动元件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=3&amp;categoryId=1032469" title="弹簧" target="_blank">弹簧</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=3&amp;categoryId=1040140" title="工业皮带" target="_blank">工业皮带</a>
+															</li>
+														</ul>
+													</div>
+													<div class="cell-brand-layer">
+														<div class="header fd-clr">
+															<span class="title">标准件品牌</span>
+															<a href="http://imall.1688.com/industry/index.htm?index=3" class="more">更多</a>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://imall.1688.com/brand/2287.htm">盛峰</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/2467.htm">诸宝</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/560.htm">景奥</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/283.htm">SKF</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+													<div class="cell-brand-activity">
+														<div class="header">
+															<span class="title">品牌活动</span>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://view.1688.com/cms/promotion/gyp/20120222/jgj/index.html">千种紧固件热销款</a>
+																</li>
+																<li>
+																	<a href="http://industry.1688.com/promotion/tyjx/2013/05/index.html">通用机械原厂供应商推荐</a>
+																</li>
+																<li>
+																	<a href="http://industry.1688.com/jixie">流体控制&amp;标准件优质商家</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="o-main">
+													<h4>
+														<a href="http://imall.1688.com/industry/index.htm?index=4" target="_blank" title="五金工具">五金工具</a>
+													</h4>
+													<span class="o-subtitle">
+														<a href="http://imall.1688.com/brand/222.htm" target="_blank" title="BOSCH/博世">BOSCH/博世</a>
+													</span>
+												</div>
+												<div class="o-extra" style="top: 0px;">
+													<div class="cell-category-list" style="height: 282px;">
+														<ul>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=4&amp;categoryId=1042817" title="手动工具" target="_blank">手动工具</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=4&amp;categoryId=1032336" title="电动工具" target="_blank">电动工具</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=4&amp;categoryId=10355" title="气动工具" target="_blank">气动工具</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=4&amp;categoryId=1046977" title="组合工具" target="_blank">组合工具</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=4&amp;categoryId=10353" title="通用五金配件" target="_blank">通用五金配件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=4&amp;categoryId=1453" title="磨具" target="_blank">磨具</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=4&amp;categoryId=1428" title="磨料" target="_blank">磨料</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=4&amp;categoryId=1427" title="焊接材料与附件" target="_blank">焊接材料与附件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=4&amp;categoryId=1032472" title="匠作工具" target="_blank">匠作工具</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=4&amp;categoryId=1036783" title="液压工具" target="_blank">液压工具</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=4&amp;categoryId=1031748" title="工具箱包" target="_blank">工具箱包</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=4&amp;categoryId=1456" title="电焊、切割设备" target="_blank">电焊、切割设备</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=4&amp;categoryId=1032409" title="锯" target="_blank">锯</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=4&amp;categoryId=http://imall.1688.com/industry/index.htm?index=4&amp;categoryId=3305" title="维护工具" target="_blank">维护工具</a>
+															</li>
+														</ul>
+													</div>
+													<div class="cell-brand-layer">
+														<div class="header fd-clr">
+															<span class="title">五金工具品牌</span>
+															<a href="http://imall.1688.com/industry/index.htm?index=4" class="more">更多</a>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://imall.1688.com/brand/222.htm">BOSCH/博世</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/223.htm">Stanley/史丹利</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/1098.htm">Endura/力易得</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/228.htm">Prokits/宝工</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+													<div class="cell-brand-activity">
+														<div class="header">
+															<span class="title">品牌活动</span>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://industry.1688.com/huodong/imall/newpp/issue/3.html">五金工具知名品牌新品发布会</a>
+																</li>
+
+															</ul>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="o-main">
+													<h4>
+														<a href="http://imall.1688.com/industry/index.htm?index=5" target="_blank" title="仪器仪表">仪器仪表</a>
+													</h4>
+													<span class="o-subtitle">
+														<a href="http://imall.1688.com/brand/111.htm" target="_blank" title="Fluke/福禄克">Fluke/福禄克</a>
+													</span>
+												</div>
+												<div class="o-extra" style="top: -160px;">
+													<div class="cell-category-list" style="height: 462px;">
+														<ul>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1036196" title="变送器" target="_blank">变送器</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=10109" title="车用仪表" target="_blank">车用仪表</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1032384" title="电工仪器仪表" target="_blank">电工仪器仪表</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1032382" title="电子测量仪器" target="_blank">电子测量仪器</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=10211" title="分析仪器" target="_blank">分析仪器</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1904" title="光学仪器" target="_blank">光学仪器</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1032372" title="衡器" target="_blank">衡器</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1036206" title="环境检测仪器" target="_blank">环境检测仪器</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1535" title="量具" target="_blank">量具</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=10212" title="量仪" target="_blank">量仪</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1032396" title="流量仪表" target="_blank">流量仪表</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1033898" title="气体分析仪" target="_blank">气体分析仪</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1033897" title="色谱仪" target="_blank">色谱仪</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1036185" title="生物仪器" target="_blank">生物仪器</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1032383" title="实验仪器装置" target="_blank">实验仪器装置</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=10210" title="试验机" target="_blank">试验机</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1036179" title="试验箱及气候环境设备" target="_blank">试验箱及气候环境设备</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1032398" title="温湿度仪表" target="_blank">温湿度仪表</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1033877" title="无损检测仪器" target="_blank">无损检测仪器</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1032395" title="物位仪表" target="_blank">物位仪表</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1032397" title="压力仪表" target="_blank">压力仪表</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=10214" title="专用仪器仪表" target="_blank">专用仪器仪表</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=3306" title="汽摩检测设备" target="_blank">汽摩检测设备</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=5&amp;categoryId=1036215" title="室内环保检测仪器" target="_blank">室内环保检测仪器</a>
+															</li>
+														</ul>
+													</div>
+													<div class="cell-brand-layer">
+														<div class="header fd-clr">
+															<span class="title">仪器仪表品牌</span>
+															<a href="http://imall.1688.com/industry/index.htm?index=5" class="more">更多</a>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://imall.1688.com/brand/111.htm">Fluke/福禄克</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/273.htm">TESTO/德图</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/1024.htm">AUTONICS</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/110.htm">Smart/希玛</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+													<div class="cell-brand-activity">
+														<div class="header">
+															<span class="title">品牌活动</span>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://industry.1688.com/huodong/yqyb_ppz2.html">仪器仪表知名品牌</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="o-main">
+													<h4>
+														<a href="http://imall.1688.com/industry/index.htm?index=6" target="_blank" title="电子元器件">电子元器件</a>
+													</h4>
+													<span class="o-subtitle">
+														<a href="http://imall.1688.com/brand/565.htm" target="_blank" title="ST/意法">ST/意法</a>
+													</span>
+												</div>
+												<div class="o-extra" style="top: -141px;">
+													<div class="cell-category-list" style="height: 390px;">
+														<ul>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1043726" title="集成电路(IC)" target="_blank">集成电路(IC)</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1038818" title="二极管" target="_blank">二极管</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1040642" title="三极管" target="_blank">三极管</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1411" title="整流器、整流设备" target="_blank">整流器、整流设备</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1039427" title="连接器" target="_blank">连接器</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1038333" title="电阻器" target="_blank">电阻器</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1039392" title="电容器" target="_blank">电容器</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1032243" title="场效应管" target="_blank">场效应管</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1032242" title="可控硅(晶闸管)" target="_blank">可控硅(晶闸管)</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1039216" title="LED系列产品" target="_blank">LED系列产品</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1038219" title="继电器" target="_blank">继电器</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1032329" title="扬声器(喇叭)" target="_blank">扬声器(喇叭)</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1039966" title="保护器件" target="_blank">保护器件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1039371" title="显示器件" target="_blank">显示器件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1038209" title="变频器" target="_blank">变频器</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1040236" title="光电器件" target="_blank">光电器件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1040193" title="电位器" target="_blank">电位器</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1039748" title="电感器" target="_blank">电感器</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1040005" title="电声器件" target="_blank">电声器件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=6&amp;categoryId=1039960" title="传感器" target="_blank">传感器</a>
+															</li>
+														</ul>
+													</div>
+													<div class="cell-brand-layer">
+														<div class="header fd-clr">
+															<span class="title">电子元器件品牌</span>
+															<a href="http://imall.1688.com/industry/index.htm?index=6" class="more">更多</a>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://imall.1688.com/brand/781.htm">Everlight/亿光</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/1176.htm">FH/风华</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/785.htm?pageIndex=5&amp;properties=&amp;postCatId=">Panasonic/松下</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/565.htm">ST/意法</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+													<div class="cell-brand-activity">
+														<div class="header">
+															<span class="title">品牌活动</span>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://view.1688.com/cms/promotion/bdt/pplz/index.html">半导体品牌大联展</a>
+																</li>
+																<li>
+																	<a href="http://industry.1688.com/huodong/gyp_dz/ppyc/index.html">电子元器件原厂品牌展</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="o-main">
+													<h4>
+														<a href="http://imall.1688.com/industry/index.htm?index=7" target="_blank" title="机床刀具">机床刀具</a>
+													</h4>
+													<span class="o-subtitle">
+														<a href="http://imall.1688.com/brand/1103.htm" target="_blank" title="YAMAWA">YAMAWA</a>
+													</span>
+												</div>
+												<div class="o-extra" style="top: -95px;">
+													<div class="cell-category-list" style="height: 304px;">
+														<ul>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=7&amp;categoryId=1426" title="机床" target="_blank">机床</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=7&amp;categoryId=10350" title="刀具、夹具" target="_blank">刀具、夹具</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=7&amp;categoryId=1032476" title="机床附件" target="_blank">机床附件</a>
+															</li>
+														</ul>
+													</div>
+													<div class="cell-brand-layer">
+														<div class="header fd-clr">
+															<span class="title">机床刀具品牌</span>
+															<a href="http://imall.1688.com/industry/index.htm?index=7" class="more">更多</a>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://imall.1688.com/brand/516.htm">宝时格</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/2128.htm">海特数控</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/2448.htm">鼎亚</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/2185.htm">万德</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/1916.htm">OSG</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/1916.htm">沃尔德</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+													<div class="cell-brand-activity">
+														<div class="header">
+															<span class="title">品牌活动</span>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://view.1688.com/cms/promotion/chandijichuang/201304.html?spm=a260k.635.5746629.70">优质机床、产地货源</a>
+																</li>
+
+															</ul>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="o-main">
+													<h4>
+														<a href="http://imall.1688.com/industry/index.htm?index=8" target="_blank" title="照明工业">照明工业</a>
+													</h4>
+													<span class="o-subtitle">
+														<a href="http://imall.1688.com/brand/242.htm" target="_blank" title="PHILIPS/飞利浦">PHILIPS/飞利浦</a>
+													</span>
+												</div>
+												<div class="o-extra" style="top: 0px;">
+													<div class="cell-category-list" style="height: 262px;">
+														<ul>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=8&amp;categoryId=1046758" title="LED灯具" target="_blank">LED灯具</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=8&amp;categoryId=10217" title="室外照明灯具" target="_blank">室外照明灯具</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=8&amp;categoryId=1034964" title="专门用途灯具" target="_blank">专门用途灯具</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=8&amp;categoryId=527" title="气体放电灯" target="_blank">气体放电灯</a>
+															</li>
+														</ul>
+													</div>
+													<div class="cell-brand-layer">
+														<div class="header fd-clr">
+															<span class="title">照明工业品牌</span>
+															<a href="http://imall.1688.com/industry/index.htm?index=8" class="more">更多</a>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://imall.1688.com/brand/242.htm">PHILIPS/飞利浦</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/463.htm">OSRAM/欧司朗</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/1979.htm">清华同方</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/2191.htm">华艺</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+													<div class="cell-brand-activity">
+														<div class="header">
+															<span class="title">品牌活动</span>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://view.1688.com/cms/mro/ledpinpai.html">LED灯具知名品牌原厂</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item">
+												<div class="o-main">
+													<h4>
+														<a href="http://imall.1688.com/industry/index.htm?index=9" target="_blank" title="专用设备">专用设备</a>
+													</h4>
+													<span class="o-subtitle">
+														<a href="http://imall.1688.com/brand/977.htm" target="_blank" title="Zebra/斑马">Zebra/斑马</a>
+													</span>
+												</div>
+												<div class="o-extra" style="top: -161px;">
+													<div class="cell-category-list" style="height: 390px;">
+														<ul>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=9&amp;categoryId=329" title="服装机械设备" target="_blank">服装机械设备</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=9&amp;categoryId=2307" title="包装设备" target="_blank">包装设备</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=9&amp;categoryId=1423" title="压缩设备" target="_blank">压缩设备</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=9&amp;categoryId=10356" title="减速机、变速机" target="_blank">减速机、变速机</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=9&amp;categoryId=1457" title="涂装设备" target="_blank">涂装设备</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=9&amp;categoryId=10446" title="工程机械、建筑机械" target="_blank">工程机械、建筑机械</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=9&amp;categoryId=10236" title="电子产品制造设备" target="_blank">电子产品制造设备</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=9&amp;categoryId=1031646" title="塑料机械" target="_blank">塑料机械</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=9&amp;categoryId=1041627" title="液压机械与元件" target="_blank">液压机械与元件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=9&amp;categoryId=10347" title="过滤设备" target="_blank">过滤设备</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=9&amp;categoryId=10346" title="清洗清理设备" target="_blank">清洗清理设备</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=9&amp;categoryId=138" title="农业机械" target="_blank">农业机械</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=9&amp;categoryId=1031664" title="制冷设备" target="_blank">制冷设备</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=9&amp;categoryId=10095" title="食品、饮料加工设备" target="_blank">食品、饮料加工设备</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/spubrand/spu_list_1698.htm" title="商用车" target="_blank">商用车</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=9&amp;categoryId=1034244 " title="原水处理设备" target="_blank">原水处理设备</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=9&amp;categoryId=1031671" title="混合设备" target="_blank">混合设备</a>
+															</li>
+															<li>
+																<a href="http://s.1688.com/selloffer/--10416.html" title="干燥设备" target="_blank">干燥设备</a>
+															</li>
+															<li>
+																<a href="http://s.1688.com/selloffer/--922.html" title="矿山施工设备" target="_blank">矿山施工设备</a>
+															</li>
+															<li>
+																<a href="http://s.1688.com/selloffer/--1031669.html" title="粉碎设备" target="_blank">粉碎设备</a>
+															</li>
+														</ul>
+													</div>
+													<div class="cell-brand-layer">
+														<div class="header fd-clr">
+															<span class="title">专用设备品牌</span>
+															<a href="http://imall.1688.com/industry/index.htm?index=9" class="more">更多</a>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://imall.1688.com/brand/911.htm">Brother/兄弟</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/1028.htm">TOSHIBA/东芝</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/1068.htm">karcher/凯驰</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/977.htm">Zebra/斑马</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+													<div class="cell-brand-activity">
+														<div class="header">
+															<span class="title">品牌活动</span>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://industry.1688.com/imall/newpp/issue/2.html">机械设备自主品牌发布会</a>
+																</li>
+																<li>
+																	<a href="http://industry.1688.com/huodong/yasuoji/brand/index.html">空压机十大知名品牌</a>
+																</li>
+																<li>
+																	<a href="http://view.1688.com/cms/promotion/fengrenji/brand/20130225/index.html">服装设备十大品牌官方店铺</a>
+																</li>
+																<li>
+																	<a href="http://view.1688.com/cms/promotion/promotion/bz/201207.html">食品包装设备全场冰点价</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item ">
+												<div class="o-main">
+													<h4>
+														<a href="http://imall.1688.com/industry/index.htm?index=10" target="_blank" title="流体控制">流体控制</a>
+													</h4>
+													<span class="o-subtitle">
+														<a href="http://imall.1688.com/brand/1898.htm?spm=a260b.1103857.5079379.148" target="_blank" title="雄利">雄利</a>
+													</span>
+												</div>
+												<div class="o-extra" style="">
+													<div class="cell-category-list" style="height: 290px;">
+														<ul>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1425" title="泵" target="_blank">泵</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=141907" title="阀门" target="_blank">阀门</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1455" title="传动件" target="_blank">传动件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1422" title="风机、排风设备" target="_blank">风机、排风设备</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1032468" title="密封件" target="_blank">密封件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1032471" title="气动元件" target="_blank">气动元件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1041627" title="液压机械与元件" target="_blank">液压机械与元件</a>
+															</li>
+														</ul>
+													</div>
+													<div class="cell-brand-layer">
+														<div class="header fd-clr">
+															<span class="title">流体控制品牌</span>
+															<a href="http://imall.1688.com/industry/index.htm?index=10" class="more">更多</a>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://imall.1688.com/brand/2465.htm">SKYSEA/天海</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/2244.htm">酷瑞</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/2251.htm">上兰</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/2249.htm">弘科</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+													<div class="cell-brand-activity">
+														<div class="header">
+															<span class="title">品牌活动</span>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://industry.1688.com/promotion/tyjx/2013/05/index.html">通用机械原厂供应商推荐</a>
+																</li>
+																<li>
+																	<a href="http://industry.1688.com/jixie">流体控制&amp;标准件优质商家</a>
+																</li>
+
+															</ul>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item ">
+												<div class="o-main">
+													<h4>
+														<a href="http://imall.1688.com/industry/index.htm?index=10" target="_blank" title="流体控制">流体控制</a>
+													</h4>
+													<span class="o-subtitle">
+														<a href="http://imall.1688.com/brand/1898.htm?spm=a260b.1103857.5079379.148" target="_blank" title="雄利">雄利</a>
+													</span>
+												</div>
+												<div class="o-extra" style="">
+													<div class="cell-category-list" style="height: 290px;">
+														<ul>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1425" title="泵" target="_blank">泵</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=141907" title="阀门" target="_blank">阀门</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1455" title="传动件" target="_blank">传动件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1422" title="风机、排风设备" target="_blank">风机、排风设备</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1032468" title="密封件" target="_blank">密封件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1032471" title="气动元件" target="_blank">气动元件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1041627" title="液压机械与元件" target="_blank">液压机械与元件</a>
+															</li>
+														</ul>
+													</div>
+													<div class="cell-brand-layer">
+														<div class="header fd-clr">
+															<span class="title">流体控制品牌</span>
+															<a href="http://imall.1688.com/industry/index.htm?index=10" class="more">更多</a>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://imall.1688.com/brand/2465.htm">SKYSEA/天海</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/2244.htm">酷瑞</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/2251.htm">上兰</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/2249.htm">弘科</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+													<div class="cell-brand-activity">
+														<div class="header">
+															<span class="title">品牌活动</span>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://industry.1688.com/promotion/tyjx/2013/05/index.html">通用机械原厂供应商推荐</a>
+																</li>
+																<li>
+																	<a href="http://industry.1688.com/jixie">流体控制&amp;标准件优质商家</a>
+																</li>
+
+															</ul>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item ">
+												<div class="o-main">
+													<h4>
+														<a href="http://imall.1688.com/industry/index.htm?index=10" target="_blank" title="流体控制">流体控制</a>
+													</h4>
+													<span class="o-subtitle">
+														<a href="http://imall.1688.com/brand/1898.htm?spm=a260b.1103857.5079379.148" target="_blank" title="雄利">雄利</a>
+													</span>
+												</div>
+												<div class="o-extra" style="">
+													<div class="cell-category-list" style="height: 290px;">
+														<ul>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1425" title="泵" target="_blank">泵</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=141907" title="阀门" target="_blank">阀门</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1455" title="传动件" target="_blank">传动件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1422" title="风机、排风设备" target="_blank">风机、排风设备</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1032468" title="密封件" target="_blank">密封件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1032471" title="气动元件" target="_blank">气动元件</a>
+															</li>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=10&amp;categoryId=1041627" title="液压机械与元件" target="_blank">液压机械与元件</a>
+															</li>
+														</ul>
+													</div>
+													<div class="cell-brand-layer">
+														<div class="header fd-clr">
+															<span class="title">流体控制品牌</span>
+															<a href="http://imall.1688.com/industry/index.htm?index=10" class="more">更多</a>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://imall.1688.com/brand/2465.htm">SKYSEA/天海</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/2244.htm">酷瑞</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/2251.htm">上兰</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/2249.htm">弘科</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+													<div class="cell-brand-activity">
+														<div class="header">
+															<span class="title">品牌活动</span>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://industry.1688.com/promotion/tyjx/2013/05/index.html">通用机械原厂供应商推荐</a>
+																</li>
+																<li>
+																	<a href="http://industry.1688.com/jixie">流体控制&amp;标准件优质商家</a>
+																</li>
+
+															</ul>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="item ">
+												<div class="o-main">
+													<h4>
+														<a href="http://imall.1688.com/industry/index.htm?index=11" target="_blank" title="个人防护">个人防护</a>
+													</h4>
+													<span class="o-subtitle">
+														<a href="http://imall.1688.com/brand/124.htm" target="_blank" title="3M">3M</a>
+													</span>
+												</div>
+												<div class="o-extra" style="">
+													<div class="cell-category-list" style="height: 117px;">
+														<ul>
+															<li>
+																<a href="http://imall.1688.com/industry/index.htm?index=11&amp;categoryId=3007" title="作业防护" target="_blank">作业防护</a>
+															</li>
+														</ul>
+													</div>
+													<div class="cell-brand-layer">
+														<div class="header fd-clr">
+															<span class="title">安全防护品牌</span>
+															<a href="http://imall.1688.com/industry/index.htm?index=11" class="more">更多</a>
+														</div>
+														<div class="content">
+															<ul class="list">
+																<li>
+																	<a href="http://imall.1688.com/brand/124.htm">3M</a>
+																</li>
+																<li>
+																	<a href="http://imall.1688.com/brand/473.htm">金佰利</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+													<!--             <div class="cell-brand-activity">					
+													<div class="header">
+														<span class="title">品牌活动</span>
+													</div>
+													<div class="content">
+														<ul class="list">
+															<li>
+																<a href="#">安全防护最人气供应商</a>
+															</li>
+															<li>
+																<a href="#">安全防护最人气供应商</a>
+															</li>
+															<li>
+																<a href="#">安全防护最人气供应商</a>
+															</li>
+															<li>
+																<a href="#">安全防护最人气供应商</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+												-->
+											</div>
+										</li>
+										<li class="item  last-item ">
+											<div class="o-main">
+												<h4>
+													<a href="http://imall.1688.com/industry/index.htm?index=12" target="_blank" title="电气控制">电气控制</a>
+												</h4>
+												<span class="o-subtitle">
+													<a href="http://imall.1688.com/brand/319.htm" target="_blank" title="ABB">ABB</a>
+												</span>
+											</div>
+											<div class="o-extra" style="">
+												<div class="cell-category-list" style="height: 262px;">
+													<ul>
+														<li>
+															<a href="http://imall.1688.com/industry/index.htm?index=12&amp;categoryId=504" title="工控系统及装备" target="_blank">工控系统及装备</a>
+														</li>
+														<li>
+															<a href="http://imall.1688.com/industry/index.htm?index=12&amp;categoryId=524" title="低压电器" target="_blank">低压电器</a>
+														</li>
+														<li>
+															<a href="http://imall.1688.com/industry/index.htm?index=12&amp;categoryId=525" title="高压电器" target="_blank">高压电器</a>
+														</li>
+														<li>
+															<a href="http://imall.1688.com/industry/index.htm?index=12&amp;categoryId=10228" title="电动机" target="_blank">电动机</a>
+														</li>
+														<li>
+															<a href="http://imall.1688.com/industry/index.htm?index=12&amp;categoryId=1008" title="发电机、发电机组" target="_blank">发电机、发电机组</a>
+														</li>
+														<li>
+															<a href="http://imall.1688.com/industry/index.htm?index=12&amp;categoryId=10233" title="电热设备" target="_blank">电热设备</a>
+														</li>
+														<li>
+															<a href="http://imall.1688.com/industry/index.htm?index=12&amp;categoryId=526" title="配电输电设备" target="_blank">配电输电设备</a>
+														</li>
+														<li>
+															<a href="http://imall.1688.com/industry/index.htm?index=12&amp;categoryId=530" title="电工电器成套设备" target="_blank">电工电器成套设备</a>
+														</li>
+														<li>
+															<a href="http://imall.1688.com/industry/index.htm?index=12&amp;categoryId=1038209" title="变频器" target="_blank">变频器</a>
+														</li>
+														<li>
+															<a href="http://imall.1688.com/industry/index.htm?index=12&amp;categoryId=1048230" title="变压器" target="_blank">变压器</a>
+														</li>
+													</ul>
+												</div>
+												<div class="cell-brand-layer">
+													<div class="header fd-clr">
+														<span class="title">电气控制品牌</span>
+														<a href="http://imall.1688.com/industry/index.htm?spm=a260b.1103857.5079379.141&amp;index=12" class="more">更多</a>
+													</div>
+													<div class="content">
+														<ul class="list">
+															<li>
+																<a href="http://kaimeidianqi.cn.1688.com/">Siemens/西门子</a>
+															</li>
+															<li>
+																<a href="http://bygkzdh.cn.1688.com/">TECO/东元</a>
+															</li>
+															<li>
+																<a href="http://zsyingtai88.cn.1688.com/">Schneider/施耐德</a>
+															</li>
+															<li>
+																<a href="http://hainader.cn.1688.com/">Fuji/富士</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="cell-brand-activity">
+													<div class="header">
+														<span class="title">品牌活动</span>
+													</div>
+													<div class="content">
+														<ul class="list">
+															<li>
+																<a href="http://industry.1688.com/dgdg/dqkz.html">电气控制知名品牌</a>
+															</li>
+
+														</ul>
+													</div>
+												</div>
+											</div>
+										</li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+								<div class="r-main">
+									<div class="mod mod-banner">
+										<div class="header">
+											<ul>
+												<li>1</li>
+												<li>2</li>
+												<li>3</li>
+												<li>4</li>
+												<li>5</li>
+												<li>6</li>
+											</ul>
+										</div>
+										<div class="content">
+											<ul>
+												<li>
+													<a href="http://industry.1688.com/zhongshan.html" title="中山照明" style="background: url(http://img.f2e.taobao.net/img.png?x=950x280) no-repeat center 0;"></a>
+												</li>
+												<li>
+													<a href="http://industry.1688.com/huodong/promotion/jxwj/2013/07/index.html" title="机械五金大咖秀" style="background: url(http://img.f2e.taobao.net/img.png?x=951x280) no-repeat center 0;"></a>
+												</li>
+												<li>
+													<a href="http://industry.1688.com/huodong/jkyb.html" title="健康安全监测仪表" style="background: url(http://img.f2e.taobao.net/img.png?x=952x280) no-repeat center 0;"></a>
+												</li>
+												<li>
+													<a href="http://view.1688.com/cms/mro/pinpaijichuang/2013/07/index.html" title="最快的线切割" style="background: url(http://img.f2e.taobao.net/img.png?x=953x280) no-repeat center 0;"></a>
+												</li>
+												<li>
+													<a href="http://industry.1688.com/huodong/yqyb/zpcdpf.html" title="热卖仪表一手货源" style="background: url(http://img.f2e.taobao.net/img.png?x=954x280) no-repeat center 0;"></a>
+												</li>
+												<li>
+													<a href="http://view.1688.com/cms/promotion/gyp/imall/dgdq.html" title="电工电气国产品牌自主营销" style="background: url(http://img.f2e.taobao.net/img.png?x=955x280) no-repeat center 0;"></a>
+												</li>
+											</ul>
+										</div>
+
+									</div>
+									<div class="region region-market">
+										<div class="mod-integrity">
+											<ul>
+												<li class="integrity-safe tab">
+										          <h4><a href="http://view.1688.com/cms/safe/xyzf/zwz/alipay/zfbyxy.html?spm=a2604.16860.5085509.1" title="安全交易" data-spm-anchor-id="a2604.16860.5085509.1"><s class="icon icon-safe"></s>安全交易<s class="icon icon-dropdown"></s></a></h4>
+													<div class="integrity-expansion">
+														<div class="inte-ex-content">
+															<p>买家先付款到支付宝，支付宝担保货款安全；收到货品并确认后，再由支付宝打款给卖家。</p>
+															<p>如逾期未收到商品或商品不符合要求，买家可以提出退款申请。</p>
+														</div>
+														<div class="inte-ex-bottom">
+															<a href="https://memberprod.alipay.com/account/reg/index.htm" class="inte-ex-btn">免费注册支付宝</a>
+															<a href="http://tradeconfig.1688.com/alipay/alipay_manager.htm" class="bind-alipay">绑定支付宝</a>
+														</div>
+													</div>
+												</li>
+												<li class="integrity-trust tab">
+										          <h4><a href="http://page.1688.com/buyerprotection/buyer.html" title="买家保障"><s class="icon icon-trust"></s>买家保障<s class="icon icon-dropdown"></s></a></h4>
+													<div class="integrity-expansion">
+														<div class="inte-ex-content">
+															<p>卖家缴纳保证金为买家提供保障，若交易中卖家发生违约或不诚信行为，买家可获得先行赔付。</p>
+														</div>
+														<div class="inte-ex-bottom">
+															<ul class="right-list">
+										                      	<li><span class="decimal">1.</span>选择带&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;的产品<s class="icon icon-bao"></s></li>
+																<li><span class="decimal">2.</span>在线下单并支付</li>
+																<li><span class="decimal">3.</span>如遇损失，发起维权<a href="http://view.1688.com/cms/promotion/safeguard/buyer.html" title="维权流程" class="icon icon-right">维权流程</a></li>
+															</ul>
+														</div>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<div class="mod mod-cal fd-clr" data-category-ids="3,54">
+										  <div class="cal-ym" id="js-cal-ym"><span class="cal-year">2013</span><span class="cal-month">08</span></div>
+										  <div class="cal-d" id="js-cal-d">09</div>
+										  <div class="cal-trends">今日新增产品<em>133566</em>件<br>总产品数<em>11390757</em>件</div>
+										</div>
+										<div class="mod mod-newrec" id="mod-newrec">
+										  <div class="cell-header">
+										    <h3>今日活动</h3>
+										    <a href="#" target="_self" class="next"><span>下一个</span></a>
+										    <a href="#" target="_self" class="prev"><span>上一个</span></a>
+										  </div>
+										  <div class="cell-body">
+										    <ul class="newrec-list" id="newrec-list" style="width: 952px;">
+										      <li class="f-tab-b">
+										        <div class="product-list fd-clr">
+										            <div class="item">
+										            <dl class="fd-clr">
+										              <dt><a href="http://wholesale.1688.com/xshow/ushow_5_100.htm?spm=a2604.16860.5085505.45&amp;ins=100&amp;province=&amp;showProvince=&amp;city=&amp;isMultiColor=false&amp;isMultiSize=false&amp;categoryId=&amp;showSign=5&amp;feature=&amp;sortType=sortBySoldOutDesc&amp;priceLow=&amp;priceHigh=&amp;quantityBegin=0&amp;onlineStatus=false&amp;memberTag=22785&amp;offerTag=&amp;star=false&amp;taohot=false" title="女装秋装新品" class="a-img"><img src="http://i02.c.aliimg.com/cms/upload/2013/664/695/1596466_634171355.jpg" width="75" height="75" alt="女装秋装新品"></a></dt>
+										              <dd class="product-title"><a href="http://wholesale.1688.com/xshow/ushow_5_100.htm?spm=a2604.16860.5085505.45&amp;ins=100&amp;province=&amp;showProvince=&amp;city=&amp;isMultiColor=false&amp;isMultiSize=false&amp;categoryId=&amp;showSign=5&amp;feature=&amp;sortType=sortBySoldOutDesc&amp;priceLow=&amp;priceHigh=&amp;quantityBegin=0&amp;onlineStatus=false&amp;memberTag=22785&amp;offerTag=&amp;star=false&amp;taohot=false" title="产地一手货 全场8元起">2013女装秋装上新</a></dd>
+										              <dd class="product-time"><em>产地各色风格货源</em></dd>
+										              <dd class="product-join"><em>新品抢鲜批！</em></dd>
+										            </dl>
+										          </div>
+										          <div class="item">
+										             <dl class="fd-clr">
+										                  <dt><a href="http://fushi.1688.com/promotion/shubao/index.html" title="中国好书包" class="a-img"><img src="http://i04.c.aliimg.com/cms/upload/2013/370/306/1603073_1826564227.jpg" width="75" height="75" alt="中国好书包"></a></dt>
+										              <dd class="product-title"><a href="http://fushi.1688.com/promotion/shubao/index.html" title="中国好书包">中国好书包</a></dd>
+										              <dd class="product-time"><em>赚翻开学季</em></dd>
+										               <dd class="product-join"><em>精选书包好货源</em></dd>
+										            </dl>
+										          </div>
+										        </div>
+										      </li>
+										    <li class="f-tab-b">
+										        <div class="product-list fd-clr">
+										          <div class="item">
+										            <dl class="fd-clr">
+										              <dt><a href="http://page.1688.com/fuzhuang/neiyi/xinpin.html" title="" class="a-img"><img src="http://i01.c.aliimg.com/img/ibank/2013/608/920/941029806_591570581.jpg" width="75" height="75" alt=""></a></dt>
+										              <dd class="product-title"><a href="http://page.1688.com/fuzhuang/neiyi/xinpin.html" title="">8.7内衣新品包物流</a></dd>
+										              <dd class="product-time"><em>这里就是原产地</em></dd>
+										              <dd class="product-join"><em>第一手货源</em>产地直供</dd>
+										            </dl>
+										          </div>
+										          <div class="item">
+										            <dl class="fd-clr">
+										              <dt><a href="http://view.1688.com/cms/promotion/youg/nanz.html" title="" class="a-img"><img src="http://i04.c.aliimg.com/cms/upload/2013/401/583/1385104_310382053.jpg" width="75" height="75" alt=""></a></dt>
+										              <dd class="product-title"><a href="http://view.1688.com/cms/promotion/youg/nanz.html" title="">产地牛商新品发布</a></dd>
+										              <dd class="product-time"><em>人气供应商汇集</em></dd>
+										              <dd class="product-join"><em>男装新品潮品推荐</em></dd>
+										            </dl>
+										          </div>
+										        </div>
+										      </li>
+										    <li class="f-tab-b">
+										        <div class="product-list fd-clr">
+										            <div class="item">
+										            <dl class="fd-clr">
+										              <dt><a href="http://wholesale.1688.com/xshow/ushow_5_100.htm?spm=a2604.16860.5085505.45&amp;ins=100&amp;province=&amp;showProvince=&amp;city=&amp;isMultiColor=false&amp;isMultiSize=false&amp;categoryId=&amp;showSign=5&amp;feature=&amp;sortType=sortBySoldOutDesc&amp;priceLow=&amp;priceHigh=&amp;quantityBegin=0&amp;onlineStatus=false&amp;memberTag=22785&amp;offerTag=&amp;star=false&amp;taohot=false" title="女装秋装新品" class="a-img"><img src="http://i02.c.aliimg.com/cms/upload/2013/664/695/1596466_634171355.jpg" width="75" height="75" alt="女装秋装新品"></a></dt>
+										              <dd class="product-title"><a href="http://wholesale.1688.com/xshow/ushow_5_100.htm?spm=a2604.16860.5085505.45&amp;ins=100&amp;province=&amp;showProvince=&amp;city=&amp;isMultiColor=false&amp;isMultiSize=false&amp;categoryId=&amp;showSign=5&amp;feature=&amp;sortType=sortBySoldOutDesc&amp;priceLow=&amp;priceHigh=&amp;quantityBegin=0&amp;onlineStatus=false&amp;memberTag=22785&amp;offerTag=&amp;star=false&amp;taohot=false" title="产地一手货 全场8元起">2013女装秋装上新</a></dd>
+										              <dd class="product-time"><em>产地各色风格货源</em></dd>
+										              <dd class="product-join"><em>新品抢鲜批！</em></dd>
+										            </dl>
+										          </div>
+										          <div class="item">
+										             <dl class="fd-clr">
+										                  <dt><a href="http://fushi.1688.com/promotion/shubao/index.html" title="中国好书包" class="a-img"><img src="http://i04.c.aliimg.com/cms/upload/2013/370/306/1603073_1826564227.jpg" width="75" height="75" alt="中国好书包"></a></dt>
+										              <dd class="product-title"><a href="http://fushi.1688.com/promotion/shubao/index.html" title="中国好书包">中国好书包</a></dd>
+										              <dd class="product-time"><em>赚翻开学季</em></dd>
+										               <dd class="product-join"><em>精选书包好货源</em></dd>
+										            </dl>
+										          </div>
+										        </div>
+										      </li><li class="f-tab-b">
+										        <div class="product-list fd-clr">
+										          <div class="item">
+										            <dl class="fd-clr">
+										              <dt><a href="http://page.1688.com/fuzhuang/neiyi/xinpin.html" title="" class="a-img"><img src="http://i01.c.aliimg.com/img/ibank/2013/608/920/941029806_591570581.jpg" width="75" height="75" alt=""></a></dt>
+										              <dd class="product-title"><a href="http://page.1688.com/fuzhuang/neiyi/xinpin.html" title="">8.7内衣新品包物流</a></dd>
+										              <dd class="product-time"><em>这里就是原产地</em></dd>
+										              <dd class="product-join"><em>第一手货源</em>产地直供</dd>
+										            </dl>
+										          </div>
+										          <div class="item">
+										            <dl class="fd-clr">
+										              <dt><a href="http://view.1688.com/cms/promotion/youg/nanz.html" title="" class="a-img"><img src="http://i04.c.aliimg.com/cms/upload/2013/401/583/1385104_310382053.jpg" width="75" height="75" alt=""></a></dt>
+										              <dd class="product-title"><a href="http://view.1688.com/cms/promotion/youg/nanz.html" title="">产地牛商新品发布</a></dd>
+										              <dd class="product-time"><em>人气供应商汇集</em></dd>
+										              <dd class="product-join"><em>男装新品潮品推荐</em></dd>
+										            </dl>
+										          </div>
+										        </div>
+										      </li></ul>
+										  </div>
+										</div>
+									</div>
+									<div class="mod mod-format-1 mod-brand-activity">
+										<div class="header">
+											<h3>
+												<img src="http://i01.c.aliimg.com/cms/upload/2013/207/079/970702_117857800.jpg" alt="官方旗舰店"></h3>
+											<div class="extra">
+												<ul class="obj-activity-list">
+													<li>
+														<a href="http://industry.1688.com/huodong/yqyb_ppz.html" title="仪器仪表知名品牌展" target="_blank">仪器仪表知名品牌展</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="content">
+											<ul class="pic-area fd-clr">
+												<li class="picture">
+													<a href="http://flukeshop.cn.1688.com/" title="Fluke" target="_blanket">
+														<img src="http://i04.c.aliimg.com/cms/upload/2013/760/995/1599067_2039130452.jpg"></a>
+													<div class="tuijian"></div>
+												</li>
+												<li class="picture">
+													<a href="http://cnabblp.cn.1688.com/" title="ABB" target="_blanket">
+														<img src="http://i02.c.aliimg.com/cms/upload/2013/200/894/1498002_2039130452.jpg"></a>
+													<div class="tuijian"></div>
+												</li>
+												<li class="picture">
+													<a href="http://mmm.cn.1688.com/" title="3M" target="_blanket">
+														<img src="http://i05.c.aliimg.com/cms/upload/2013/604/007/700406_117857800.jpg"></a>
+												</li>
+												<li class="picture">
+													<a href="http://haite1010.cn.1688.com/" title="海特数控机床" target="_blanket">
+														<img src="http://i00.c.aliimg.com/cms/upload/2013/827/685/1586728_2039130452.jpg"></a>
+												</li>
+												<li class="picture">
+													<a href="http://mmm.cn.1688.com/" title="3M" target="_blanket">
+														<img src="http://i05.c.aliimg.com/cms/upload/2013/604/007/700406_117857800.jpg"></a>
+												</li>
+												<li class="picture">
+													<a href="http://haite1010.cn.1688.com/" title="海特数控机床" target="_blanket">
+														<img src="http://i00.c.aliimg.com/cms/upload/2013/827/685/1586728_2039130452.jpg"></a>
+												</li>
+											</ul>
+										</div>
+										<a href="#" class="arrow-r">&gt;</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="layout layout-col">
+						<div class="grid">
+							<div class="mod-floor1">
+								<div class="cell-header">
+									<h2 class="title ms-yh">女装</h2>
+								</div>
+								<div class="cell-content">
+									<div class="banner">
+										<a href="#" class="a-img">
+											<img data-lazyload-src="http://img.f2e.taobao.net/img.png?x=200x270" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+										</a>
+									</div>
+									<div class="offer">
+										<div class="wrap">
+											<ul class="list fd-clr">
+												<li>
+													<dl class="cell-thumbnail">
+														<dt class="img-vertical">
+															<a href="#" class="img-wrap">
+																<img data-lazy-src="http://img.f2e.taobao.net/img.png?x=150x150" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+															</a>
+														</dt>
+														<dd class="description">
+															<a href="#" title="小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装">小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装</a>
+														</dd>
+														<dd class="price">
+															<span class="fd-cny">&yen;</span>
+															<em class="value">74.00</em>
+														</dd>
+														<dd class="sold-out">已售：<em class="num">1457</em>件</dd>
+													</dl>
+												</li>
+												<li>
+													<dl class="cell-thumbnail">
+														<dt class="img-vertical">
+															<a href="#" class="img-wrap">
+																<img data-lazy-src="http://img.f2e.taobao.net/img.png?x=150x150" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+															</a>
+														</dt>
+														<dd class="description">
+															<a href="#" title="小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装">小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装</a>
+														</dd>
+														<dd class="price">
+															<span class="fd-cny">&yen;</span>
+															<em class="value">74.00</em>
+														</dd>
+														<dd class="sold-out">已售：<em class="num">1457</em>件</dd>
+													</dl>
+												</li>
+												<li>
+													<dl class="cell-thumbnail">
+														<dt class="img-vertical">
+															<a href="#" class="img-wrap">
+																<img data-lazy-src="http://img.f2e.taobao.net/img.png?x=150x150" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+															</a>
+														</dt>
+														<dd class="description">
+															<a href="#" title="小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装">小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装</a>
+														</dd>
+														<dd class="price">
+															<span class="fd-cny">&yen;</span>
+															<em class="value">74.00</em>
+														</dd>
+														<dd class="sold-out">已售：<em class="num">1457</em>件</dd>
+													</dl>
+												</li>
+												<li>
+													<dl class="cell-thumbnail">
+														<dt class="img-vertical">
+															<a href="#" class="img-wrap">
+																<img data-lazy-src="http://img.f2e.taobao.net/img.png?x=150x150" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+															</a>
+														</dt>
+														<dd class="description">
+															<a href="#" title="小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装">小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装</a>
+														</dd>
+														<dd class="price">
+															<span class="fd-cny">&yen;</span>
+															<em class="value">74.00</em>
+														</dd>
+														<dd class="sold-out">已售：<em class="num">1457</em>件</dd>
+													</dl>
+												</li>
+												<li>
+													<dl class="cell-thumbnail">
+														<dt class="img-vertical">
+															<a href="#" class="img-wrap">
+																<img data-lazy-src="http://img.f2e.taobao.net/img.png?x=150x150" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+															</a>
+														</dt>
+														<dd class="description">
+															<a href="#" title="小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装">小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装</a>
+														</dd>
+														<dd class="price">
+															<span class="fd-cny">&yen;</span>
+															<em class="value">74.00</em>
+														</dd>
+														<dd class="sold-out">已售：<em class="num">1457</em>件</dd>
+													</dl>
+												</li>
+												<li>
+													<dl class="cell-thumbnail">
+														<dt class="img-vertical">
+															<a href="#" class="img-wrap">
+																<img data-lazy-src="http://img.f2e.taobao.net/img.png?x=150x150" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+															</a>
+														</dt>
+														<dd class="description">
+															<a href="#" title="小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装">小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装</a>
+														</dd>
+														<dd class="price">
+															<span class="fd-cny">&yen;</span>
+															<em class="value">74.00</em>
+														</dd>
+														<dd class="sold-out">已售：<em class="num">1457</em>件</dd>
+													</dl>
+												</li>
+											</ul>
+										</div>
+										<a href="#" class="arrow-r">&gt;</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="layout layout-col">
+						<div class="grid">
+							<div class="mod-floor2">
+								<div class="cell-header">
+									<h2 class="title ms-yh">男装</h2>
+								</div>
+								<div class="cell-content">
+									<div class="banner">
+										<a href="#" class="a-img">
+											<img data-lazyload-src="http://img.f2e.taobao.net/img.png?x=200x270" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+										</a>
+									</div>
+									<div class="offer">
+										<div class="wrap">
+											<ul class="list fd-clr">
+												<li>
+													<dl class="cell-thumbnail">
+														<dt class="img-vertical">
+															<a href="#" class="img-wrap">
+																<img data-lazy-src="http://img.f2e.taobao.net/img.png?x=150x150" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+															</a>
+														</dt>
+														<dd class="description">
+															<a href="#" title="小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装">小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装</a>
+														</dd>
+														<dd class="price">
+															<span class="fd-cny">&yen;</span>
+															<em class="value">74.00</em>
+														</dd>
+														<dd class="sold-out">已售：<em class="num">1457</em>件</dd>
+													</dl>
+												</li>
+												<li>
+													<dl class="cell-thumbnail">
+														<dt class="img-vertical">
+															<a href="#" class="img-wrap">
+																<img data-lazy-src="http://img.f2e.taobao.net/img.png?x=150x150" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+															</a>
+														</dt>
+														<dd class="description">
+															<a href="#" title="小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装">小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装</a>
+														</dd>
+														<dd class="price">
+															<span class="fd-cny">&yen;</span>
+															<em class="value">74.00</em>
+														</dd>
+														<dd class="sold-out">已售：<em class="num">1457</em>件</dd>
+													</dl>
+												</li>
+												<li>
+													<dl class="cell-thumbnail">
+														<dt class="img-vertical">
+															<a href="#" class="img-wrap">
+																<img data-lazy-src="http://img.f2e.taobao.net/img.png?x=150x150" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+															</a>
+														</dt>
+														<dd class="description">
+															<a href="#" title="小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装">小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装</a>
+														</dd>
+														<dd class="price">
+															<span class="fd-cny">&yen;</span>
+															<em class="value">74.00</em>
+														</dd>
+														<dd class="sold-out">已售：<em class="num">1457</em>件</dd>
+													</dl>
+												</li>
+												<li>
+													<dl class="cell-thumbnail">
+														<dt class="img-vertical">
+															<a href="#" class="img-wrap">
+																<img data-lazy-src="http://img.f2e.taobao.net/img.png?x=150x150" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+															</a>
+														</dt>
+														<dd class="description">
+															<a href="#" title="小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装">小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装</a>
+														</dd>
+														<dd class="price">
+															<span class="fd-cny">&yen;</span>
+															<em class="value">74.00</em>
+														</dd>
+														<dd class="sold-out">已售：<em class="num">1457</em>件</dd>
+													</dl>
+												</li>
+												<li>
+													<dl class="cell-thumbnail">
+														<dt class="img-vertical">
+															<a href="#" class="img-wrap">
+																<img data-lazy-src="http://img.f2e.taobao.net/img.png?x=150x150" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+															</a>
+														</dt>
+														<dd class="description">
+															<a href="#" title="小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装">小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装</a>
+														</dd>
+														<dd class="price">
+															<span class="fd-cny">&yen;</span>
+															<em class="value">74.00</em>
+														</dd>
+														<dd class="sold-out">已售：<em class="num">1457</em>件</dd>
+													</dl>
+												</li>
+											</ul>
+										</div>
+										<a href="#" class="arrow-r">&gt;</a>
+									</div>
+									<div class="brand">
+										<ul class="fd-clr">
+											<li>
+												<a href="#" class="a-img">
+													<img data-lazyload-src="http://img.f2e.taobao.net/img.png?x=200x60" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+												</a>
+											</li>
+											<li>
+												<a href="#" class="a-img">
+													<img data-lazyload-src="http://img.f2e.taobao.net/img.png?x=200x60" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+												</a>
+											</li>
+											<li>
+												<a href="#" class="a-img">
+													<img data-lazyload-src="http://img.f2e.taobao.net/img.png?x=200x60" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+												</a>
+											</li>
+											<li>
+												<a href="#" class="a-img">
+													<img data-lazyload-src="http://img.f2e.taobao.net/img.png?x=200x60" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="layout layout-col">
+						<div class="grid">
+							<div class="mod-active">
+								<div class="cell-header">
+									<h2 class="title ms-yh">精品活动</h2>
+								</div>
+								<div class="cell-content">
+									<div class="offer">
+										<ul class="list fd-clr">
+											<li>
+												<dl class="cell-thumbnail">
+													<dt class="img-vertical">
+														<a href="#" class="img-wrap">
+															<img data-lazy-src="http://img.f2e.taobao.net/img.png?x=220x220" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+														</a>
+													</dt>
+													<dd class="description">
+														<a href="#" title="小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装">小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装</a>
+													</dd>
+													<dd class="price">
+														<span class="fd-cny">&yen;</span>
+														<em class="value">74.00</em>
+													</dd>
+												</dl>
+											</li>
+											<li>
+												<dl class="cell-thumbnail">
+													<dt class="img-vertical">
+														<a href="#" class="img-wrap">
+															<img data-lazy-src="http://img.f2e.taobao.net/img.png?x=220x220" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+														</a>
+													</dt>
+													<dd class="description">
+														<a href="#" title="小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装">小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装</a>
+													</dd>
+													<dd class="price">
+														<span class="fd-cny">&yen;</span>
+														<em class="value">74.00</em>
+													</dd>
+												</dl>
+											</li>
+											<li>
+												<dl class="cell-thumbnail">
+													<dt class="img-vertical">
+														<a href="#" class="img-wrap">
+															<img data-lazy-src="http://img.f2e.taobao.net/img.png?x=220x220" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+														</a>
+													</dt>
+													<dd class="description">
+														<a href="#" title="小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装">小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装</a>
+													</dd>
+													<dd class="price">
+														<span class="fd-cny">&yen;</span>
+														<em class="value">74.00</em>
+													</dd>
+												</dl>
+											</li>
+											<li>
+												<dl class="cell-thumbnail">
+													<dt class="img-vertical">
+														<a href="#" class="img-wrap">
+															<img data-lazy-src="http://img.f2e.taobao.net/img.png?x=220x220" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+														</a>
+													</dt>
+													<dd class="description">
+														<a href="#" title="小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装">小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装</a>
+													</dd>
+													<dd class="price">
+														<span class="fd-cny">&yen;</span>
+														<em class="value">74.00</em>
+													</dd>
+												</dl>
+											</li>
+											<li>
+												<dl class="cell-thumbnail">
+													<dt class="img-vertical">
+														<a href="#" class="img-wrap">
+															<img data-lazy-src="http://img.f2e.taobao.net/img.png?x=220x220" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+														</a>
+													</dt>
+													<dd class="description">
+														<a href="#" title="小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装">小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装</a>
+													</dd>
+													<dd class="price">
+														<span class="fd-cny">&yen;</span>
+														<em class="value">74.00</em>
+													</dd>
+												</dl>
+											</li>
+											<li>
+												<dl class="cell-thumbnail">
+													<dt class="img-vertical">
+														<a href="#" class="img-wrap">
+															<img data-lazy-src="http://img.f2e.taobao.net/img.png?x=220x220" src="http://img.china.alibaba.com/cms/upload/other/lazyload.png" alt="" />
+														</a>
+													</dt>
+													<dd class="description">
+														<a href="#" title="小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装">小西装女修身外套夏秋装韩版女装2013新款小西服女糖果色长袖西装</a>
+													</dd>
+													<dd class="price">
+														<span class="fd-cny">&yen;</span>
+														<em class="value">74.00</em>
+													</dd>
+												</dl>
+											</li>
+										</ul>
+									</div>
+									<a href="#" class="arrow-r">&gt;</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer">
+			    <div id="footer-v0">
+			        <div class="footer-container">
+			            <div class="ali-pages">
+			                <p id="copyright">阿里巴巴版权所有 1999-2013</p>
+			                <ul>
+			                    <li><a rel="nofollow" href="http://page.1688.com/about/copyright.html" target="_self" title="著作权与商标声明">著作权与商标声明</a> |</li>
+			                    <li><a rel="nofollow" href="http://page.1688.com/about/legal.html" target="_self" title="法律声明">法律声明</a> |</li>
+			                    <li><a rel="nofollow" href="http://page.1688.com/about/service.html" target="_self" title="服务条款">服务条款</a> |</li>
+			                    <li><a rel="nofollow" href="http://page.1688.com/about/privacy.html" target="_self" title="隐私声明">隐私声明</a> |</li>
+			                    <li><a rel="nofollow" href="http://page.1688.com/shtml/about/ali_group1.shtml" target="_self" title="关于阿里巴巴">关于阿里巴巴</a> |</li>
+			                    <li><a rel="nofollow" href="http://114.1688.com/kf/contact.html?tracelog=kf_2012_budian_allcontact" target="_self" title="联系我们">联系我们</a> |</li>
+			                    <li><a href="http://page.1688.com/system/sitemap.html" target="_self" title="网站导航">网站导航</a></li>
+			                </ul>
+			            </div>
+			            <div class="ali-group">
+			                <dl>
+			                    <dt>
+			                        <a rel="nofollow" href="http://page.1688.com/shtml/about/ali_group1.shtml" target="_self" title="阿里巴巴集团">阿里巴巴集团</a>:
+			                    </dt>
+			                    <dd>
+			                        阿里巴巴网络 -<a href="http://www.alibaba.com/" target="_blank" title="国际站">国际站</a>
+			                        <a href="http://1688.com/" target="_self" title="中国站">中国站</a>
+			                        <a href="http://mai.aliexpress.com/" target="_blank" title="全球速卖通">全球速卖通</a>
+			                        |
+			                    </dd>
+			                    <dd>
+			                        <a rel="nofollow" href="http://www.taobao.com/" target="_blank" title="淘宝网">淘宝网</a>
+			                        |
+			                    </dd>
+			                    <dd>
+			                        <a rel="nofollow" href="http://www.tmall.com/" target="_blank" title="天猫">天猫</a>
+			                        |
+			                    </dd>
+			                    <dd>
+			                        <a rel="nofollow" href="http://www.etao.com/" target="_blank" title="一淘">一淘</a>
+			                        |
+			                    </dd>
+			                    <dd>
+			                        <a rel="nofollow" href="http://ju.taobao.com/" target="_blank" title="聚划算">聚划算</a>
+			                        |
+			                    </dd>
+			                    <dd>
+			                        <a rel="nofollow" href="http://www.aliyun.com/" target="_blank" title="阿里云">阿里云</a>
+			                        |
+			                    </dd>
+			                    <dd>
+			                        <a rel="nofollow" href="http://www.yahoo.com.cn/" target="_blank" title="中国雅虎">中国雅虎</a>
+			                        |
+			                    </dd>
+			                    <dd>
+			                        <a rel="nofollow" href="http://www.alipay.com/" target="_blank" title="支付宝">支付宝</a>
+			                    </dd>
+			                </dl>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+			<script type="text/javascript" src="http://static.c.aliimg.com/js/app/operation/module/category/category-min.js"></script>
+			<script type="text/javascript" src="js/index.js"></script>
+		</div>
+	</body>
+</html>
